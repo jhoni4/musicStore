@@ -23,7 +23,7 @@ buildSrc/build
 /spring-*/build
 /src/asciidoc/build
 target/
-/src/main/webapp/WEB-INF/resources/*
+/src/main/webapp/WEB-INF/resources
 # Eclipse artifacts, including WTP generated manifests
 .classpath
 .project

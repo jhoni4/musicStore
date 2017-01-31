@@ -14,9 +14,10 @@
 <title>Carousel Template for Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
-<link href="./libraries/css/bootstrap.min.css" rel="stylesheet">
-<link href="./libraries/css/main.css" rel="stylesheet">
-<link href="./libraries/css/carousel.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/main.css" rel="stylesheet">
+<link href="./resources/css/carousel.css" rel="stylesheet">
 
 
 </head>
@@ -36,7 +37,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="home">DZZZZ Records</a>
+					<a class="navbar-brand" href="home">AZ Records</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
@@ -82,7 +83,6 @@
 						<th>Price</th>
 					</tr>
 				</thead>
-				<c:forEach items="${products}" var="product">
 					<tr>
 						<td><img src="#" alt="image" /></td>
 						<td>${product.productName}</td>
@@ -90,7 +90,6 @@
 						<td>${product.productCondition}</td>
 						<td>${product.productPrice}USD</td>
 					</tr>
-				</c:forEach>
 			</table>
 
 			<!-- FOOTER -->
@@ -99,8 +98,7 @@
 				<a href="#">Back to top</a>
 			</p>
 
-			<p>
-				&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot;
+			<p> &copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; 
 				<a href="#">Terms</a>
 			</p>
 			</footer>
@@ -115,9 +113,9 @@
 	<script>
 		window.jQuery
 				|| document
-						.write('<script src="./libraries/js/jquery-1.11.3.min.js"><\/script>')
+						.write('<script src="./resources/js/jquery-1.11.3.min.js"><\/script>')
 	</script>
-	<script src="./libraries/js/bootstrap.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
 
 	<!-- <script type=”text/javascript” src=”https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js”></script> -->
 

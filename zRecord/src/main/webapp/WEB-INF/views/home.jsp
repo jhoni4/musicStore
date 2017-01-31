@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,7 +44,6 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
 							<li><a href="productList">Product</a></li>
-							<li><a href="#contact">Contact</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -51,11 +51,9 @@
 									<li><a href="productList">product</a></li>
 									<li><a href="#">Another action</a></li>
 									<li><a href="#">Something else here</a></li>
-									<li role="separator" class="divider"></li>
-									<li class="dropdown-header">Nav header</li>
-									<li><a href="#">Separated link</a></li>
 									<li><a href="#">One more separated link</a></li>
 								</ul></li>
+							<li style="float: right;"><a href="login">Login</a></li>
 						</ul>
 					</div>
 				</div>

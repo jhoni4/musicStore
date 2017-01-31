@@ -13,18 +13,22 @@ import com.yona.estore.model.Product;
 public class HomeController {
 
 	private ProductDao productDao = new ProductDao();
-	
+
 	@RequestMapping("/home")
 	public String home() {
 		return "home";
 	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
 
 	@RequestMapping("/productList")
-	public String getProduct(Model model) {
-		List<Product> productList = productDao.getProductList();
-		Product product = productList.get(0);
-		model.addAttribute(product);
-		return "productList";
+    public String getProducts(Model model) {
+        List<Product> products = productDao.getProductList();
+        model.addAttribute("products", products);
 
-	}
+        return "productList";
+    }
 }

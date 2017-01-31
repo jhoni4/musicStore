@@ -19,5 +19,5 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     
-    <mvc:resources mapping="/libraries/**" location="/WEB-INF/libraries/" />
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 </beans>

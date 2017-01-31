@@ -9,19 +9,19 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
+
 
 <title>Starter Template for Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
-<link href="./libraries/css/bootstrap.min.css" rel="stylesheet">
-<link href="./libraries/css/main.css" rel="stylesheet">
-<link href="./libraries/css/carousel.css" rel="stylesheet">
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/main.css" rel="stylesheet">
+<link href="./resources/css/carousel.css" rel="stylesheet">
 
 <!-- <link href=”https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css”>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-<title>Insert title here</title>
+<title>Az Records</title>
 </head>
 <body>
 	<div class="navbar-wrapper">
@@ -37,7 +37,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="home">DZZZ Records</a>
+						<a class="navbar-brand" href="home">AZ Records</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
@@ -219,9 +219,9 @@
 	<script>
 		window.jQuery
 				|| document
-						.write('<script src="./libraries/js/jquery-1.11.3.min.js"><\/script>')
+						.write('<script src="./resources/js/jquery-1.11.3.min.js"><\/script>')
 	</script>
-	<script src="./libraries/js/bootstrap.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
 
 	<!-- <script type=”text/javascript” src=”https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js”></script> -->
 

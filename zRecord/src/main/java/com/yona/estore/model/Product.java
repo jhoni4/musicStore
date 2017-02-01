@@ -4,94 +4,107 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
+
+import org.springframework.web.multipart.MultipartFile;
 
 // means persist this class in to database when running (1 class is 1 table and 1 instance of class is 1 row
 @Entity
 public class Product {
 
-	
-	@Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private String productId;
-	private String productName;
-	private String productCategory;
-	private String productDescription;
-	private double productPrice;
-	private String productCondition;
-	private String productStatus;
-	private int unitInStock;
-	private String productManufacturer;
+    private String productId;
+    private String productName;
+    private String productCategory;
+    private String productDescription;
+    private double productPrice;
+    private String productCondition;
+    private String productStatus;
+    private int unitInStock;
+    private String productManufacturer;
+    
+    @Transient
+    private MultipartFile productImage;
+
+    public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public String getProductId() {
-		return productId;
-	}
-	
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-	
-	public String getProductName() {
-		return productName;
-	}
+        return productId;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
 
-	public String getProductCategory() {
-		return productCategory;
-	}
+    public String getProductName() {
+        return productName;
+    }
 
-	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
-	}
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
-	public String getProductDescription() {
-		return productDescription;
-	}
+    public String getProductCategory() {
+        return productCategory;
+    }
 
-	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
-	}
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
 
-	public double getProductPrice() {
-		return productPrice;
-	}
+    public String getProductDescription() {
+        return productDescription;
+    }
 
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
-	}
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
 
-	public String getProductCondition() {
-		return productCondition;
-	}
+    public double getProductPrice() {
+        return productPrice;
+    }
 
-	public void setProductCondition(String productCondition) {
-		this.productCondition = productCondition;
-	}
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
 
-	public String getProductStatus() {
-		return productStatus;
-	}
+    public String getProductCondition() {
+        return productCondition;
+    }
 
-	public void setProductStatus(String productStatus) {
-		this.productStatus = productStatus;
-	}
+    public void setProductCondition(String productCondition) {
+        this.productCondition = productCondition;
+    }
 
-	public int getUnitInStock() {
-		return unitInStock;
-	}
+    public String getProductStatus() {
+        return productStatus;
+    }
 
-	public void setUnitInStock(int unitInStock) {
-		this.unitInStock = unitInStock;
-	}
+    public void setProductStatus(String productStatus) {
+        this.productStatus = productStatus;
+    }
 
-	public String getProductManufacturer() {
-		return productManufacturer;
-	}
+    public int getUnitInStock() {
+        return unitInStock;
+    }
 
-	public void setProductManufacturer(String productManufacturer) {
-		this.productManufacturer = productManufacturer;
-	}
+    public void setUnitInStock(int unitInStock) {
+        this.unitInStock = unitInStock;
+    }
 
+    public String getProductManufacturer() {
+        return productManufacturer;
+    }
+
+    public void setProductManufacturer(String productManufacturer) {
+        this.productManufacturer = productManufacturer;
+    }
 }
+

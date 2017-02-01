@@ -6,7 +6,9 @@ import com.yona.estore.model.Product;
 
 public interface ProductDao {
 
-    void addProduct(Product product);
+	void addProduct(Product product);
+
+    void editProduct(Product product);
 
     Product getProductById(String id);
 

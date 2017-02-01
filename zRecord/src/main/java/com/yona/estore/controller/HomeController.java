@@ -52,6 +52,11 @@ public class HomeController {
 
         return "viewProduct";
     }
+    
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
 
     @RequestMapping("/admin")
     public String adminPage() {
@@ -65,7 +70,6 @@ public class HomeController {
 
         return "productInventory";
     }
-
 
     @RequestMapping("/admin/productInventory/addProduct")
     public String addProduct(Model model) {
@@ -85,6 +89,7 @@ public class HomeController {
 
         MultipartFile productImage = product.getProductImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        System.out.println("PICTURE ROOT DIRECTORY: " + rootDirectory);
         path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\" + product.getProductId() + ".png");
 
         if (productImage != null && !productImage.isEmpty()) {

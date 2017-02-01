@@ -1,22 +1,23 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+<title>Carousel Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-
-
+<!-- Bootstrap core CSS -->
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<%-- <link href="<c:url value="/resources/css/tableStyle.css" />" rel="stylesheet"> --%>
+<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -38,8 +39,9 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="/zRecord">Home</a></li>
-							<li><a href="productList">Product</a></li>
+							<li class="active"><a href="<c:url value="/" /> ">Home</a></li>
+							<li><a href="<c:url value="/productList" />">Products</a></li>
+							<li><a href="#contact">Contact</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown" role="button" aria-haspopup="true"
 								aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -49,7 +51,10 @@
 									<li><a href="#">Something else here</a></li>
 									<li><a href="#">One more separated link</a></li>
 								</ul></li>
-							<li style="float: right;"><a href="login">Login</a></li>
+						</ul>
+						<ul class="nav navbar-nav pull-right">
+							<li><a href="<c:url value="/admin/" />">Admin</a></li>
+							<li><a href="<c:url value="/login/" />">Login</a></li>
 						</ul>
 					</div>
 				</div>

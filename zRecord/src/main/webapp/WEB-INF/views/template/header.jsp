@@ -54,7 +54,6 @@
 						</ul>
 						<ul class="nav navbar-nav pull-right">
 							<li><a href="<c:url value="/admin/" />">Admin</a></li>
-							<li><a href="<c:url value="/login/" />">Login</a></li>
 						</ul>
 					</div>
 				</div>

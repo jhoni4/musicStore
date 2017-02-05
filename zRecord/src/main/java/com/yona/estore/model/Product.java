@@ -13,13 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 // means persist this class in to database when running (1 class is 1 table and 1 instance of class is 1 row
 @Entity
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String productId;
 
     @NotEmpty (message = "The product name must not be null.")
-
     private String productName;
     private String productCategory;
     private String productDescription;
@@ -33,6 +31,7 @@ public class Product {
     private int unitInStock;
     private String productManufacturer;
 
+//@Transient= Specifies that the property or field is not persistent(not to be stored in DB)
     @Transient
     private MultipartFile productImage;
 

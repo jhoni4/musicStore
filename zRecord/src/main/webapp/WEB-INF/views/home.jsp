@@ -123,8 +123,6 @@
 					&raquo;</a>
 			</p>
 		</div>
-		<!-- /.col-lg-4 -->
 	</div>
-	<!-- /.row -->
-
+</div>
 	<%@include file="/WEB-INF/views/template/footer.jsp"%>

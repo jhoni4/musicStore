@@ -1,10 +1,16 @@
 package com.yona.estore.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cart {
+public class Cart implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4529645410847627108L;
+
 	private String cartId;
 
 	private Map<String, CartItem> cartItems;

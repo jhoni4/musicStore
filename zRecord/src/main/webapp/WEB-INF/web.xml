@@ -23,7 +23,6 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    
     <!--spring interception configuration  -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

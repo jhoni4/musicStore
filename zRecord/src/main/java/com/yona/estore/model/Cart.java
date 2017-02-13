@@ -1,80 +1,64 @@
 package com.yona.estore.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Cart implements Serializable {
-	
-	/**
+
+
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 4529645410847627108L;
+	private static final long serialVersionUID = 4955009422220482163L;
 
-	private String cartId;
+	@Id
+    @GeneratedValue
+    private int cartId;
 
-	private Map<String, CartItem> cartItems;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<CartItem> cartItems;
 
-	private double grandTotal;
+    @OneToOne
+    @JoinColumn(name = "customerId")
+    @JsonIgnore
+    private Customer customer;
 
-	private Cart() {
-		cartItems = new HashMap<String, CartItem>();
-		grandTotal = 0;
-	}
+    private double grandTotal;
 
-	public Cart(String cartId) {
-		this();
-		this.cartId = cartId;
-	}
+    public int getCartId() {
+        return cartId;
+    }
 
-	public String getCartId() {
-		return cartId;
-	}
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
+    }
 
-	public void setCartId(String cartId) {
-		this.cartId = cartId;
-	}
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
 
-	public Map<String, CartItem> getCartItem() {
-		return cartItems;
-	}
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
+    }
 
-	public void setCartItem(Map<String, CartItem> cartItem) {
-		this.cartItems = cartItem;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-	public double getGrandTotal() {
-		return grandTotal;
-	}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
-	public void setGrandTotal(double grandTotal) {
-		this.grandTotal = grandTotal;
-	}
+    public double getGrandTotal() {
+        return grandTotal;
+    }
 
-	public void addCartItem(CartItem item) {
-		String productId = item.getProduct().getProductId();
-
-		if (cartItems.containsKey(productId)) {
-			CartItem existingCartItem = cartItems.get(productId);
-			existingCartItem.setQuantity(existingCartItem.getQuantity() + item.getQuantity());
-			cartItems.put(productId, existingCartItem);
-		} else {
-			cartItems.put(productId, item);
-		}
-
-		updateGrandTotal();
-	}
-
-	public void removeCartItem(CartItem item) {
-		String productId = item.getProduct().getProductId();
-		cartItems.remove(productId);
-		updateGrandTotal();
-	}
-
-	public void updateGrandTotal() {
-		grandTotal = 0;
-		for (CartItem item : cartItems.values()) {
-			grandTotal = grandTotal + item.getTotalPrice();
-		}
-	}
+    public void setGrandTotal(double grandTotal) {
+        this.grandTotal = grandTotal;
+    }
 }

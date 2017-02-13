@@ -1,7 +1,5 @@
 package com.yona.estore.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,13 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 // means persist this class in to database when running (1 class is 1 table and 1 instance of class is 1 row
 @Entity
-public class Product implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 478578195260021809L;
-
-	@Id
+public class Product {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String productId;
 

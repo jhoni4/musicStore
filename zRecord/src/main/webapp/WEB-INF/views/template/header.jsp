@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<c:url value="/" /> ">Yonatan's Music Store</a>
+                    <a class="navbar-brand" href="<c:url value="/" /> ">Yoni's Music Store</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">

@@ -1,11 +1,10 @@
-package com.yona.estore.dao;
+package com.yona.estore.service;
 
 import java.util.List;
 
 import com.yona.estore.model.Product;
 
-public interface ProductDao {
-
+public interface ProductService {
 	List<Product> getProductList();
 
 	Product getProductById(int id);

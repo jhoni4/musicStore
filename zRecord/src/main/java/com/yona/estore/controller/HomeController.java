@@ -27,20 +27,5 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/productList")
-    public String getProducts(Model model) {
-        List<Product> products = productDao.getAllProducts();
-        model.addAttribute("products", products);
-
-        return "productList";
-    }
-
-    @RequestMapping("/productList/viewProduct/{productId}")
-    public String viewProduct(@PathVariable String productId, Model model) throws IOException {
-
-        Product product = productDao.getProductById(productId);
-        model.addAttribute(product);
-
-        return "viewProduct";
-    }
+   
 }

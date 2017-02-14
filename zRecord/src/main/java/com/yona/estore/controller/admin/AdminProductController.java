@@ -31,7 +31,6 @@ public class AdminProductController {
 	@Autowired
 	private ProductService productService;
 
-
 	/**
 	 * View addProduct
 	 * 
@@ -113,7 +112,6 @@ public class AdminProductController {
         if(result.hasErrors()) {
             return "editProduct";
         }
-
 		// MultipartFile =Return the original filename in the client's
 		// filesystem.
 		MultipartFile productImage = product.getProductImage();

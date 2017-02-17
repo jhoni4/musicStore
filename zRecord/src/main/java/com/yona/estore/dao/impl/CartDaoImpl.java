@@ -1,17 +1,33 @@
-//package com.yona.estore.dao.impl;
-//
-//import java.util.HashMap;
-//import java.util.Map;
-//
-//import org.springframework.stereotype.Repository;
-//
-//import com.yona.estore.dao.CartDao;
-//import com.yona.estore.model.Cart;
-//
-////@Repository =serves as Accessing Data by spring 
-//@Repository
-//public class CartDaoImpl implements CartDao {
-//
+package com.yona.estore.dao.impl;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.yona.estore.dao.CartDao;
+import com.yona.estore.model.Cart;
+
+//@Repository =serves as Accessing Data by spring 
+@Repository
+@Transactional
+public class CartDaoImpl implements CartDao {
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public Cart getCartById(int cartId){
+		Session session = sessionFactory.getCurrentSession();
+		return (Cart) session.get(Cart.class, cartId);
+	}
+	
+	public void updateCart(Cart cart){
+		Session session = sessionFactory.getCurrentSession();
+		int cartId = cart.getCartId();
+		session.update(cart);
+	}
+
 //    private Map<String, Cart> listOfCarts;
 //
 //    public CartDaoImpl() {
@@ -52,6 +68,6 @@
 //
 //        listOfCarts.remove(cartId);
 //    }
-//    
-//    
-//}
+    
+    
+}

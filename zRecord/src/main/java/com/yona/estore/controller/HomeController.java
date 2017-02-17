@@ -15,6 +15,11 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
+	
+	@RequestMapping("/contact")
+	public String contact() {
+		return "contact";
+	}
 
 	@RequestMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
@@ -29,5 +34,7 @@ public class HomeController {
 
 		return "login";
 	}
+	
+	
 
 }

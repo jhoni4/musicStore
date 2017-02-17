@@ -13,28 +13,22 @@ import com.yona.estore.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	private CustomerDao customerDao;
+    private CustomerDao customerDao;
 
-	@Override
-	public void addCustomer(Customer customer) {
-		customerDao.addCustomer(customer);
+    public void addCustomer (Customer customer) {
+        customerDao.addCustomer(customer);
+    }
 
-	}
+    public Customer getCustomerById(int customerId) {
+        return customerDao.getCustomerById(customerId);
+    }
 
-	@Override
-	public Customer getCustomerById(int customerId) {
-		return customerDao.getCustomerById(customerId);
-	}
+    public List<Customer> getAllCustomers() {
+        return customerDao.getAllCustomers();
+    }
 
-	@Override
-	public List<Customer> getAllCustomers() {
-		return customerDao.getAllCustomers();
-		
-	}
-
-	@Override
-	public Customer getCustomerByUsername(String username) {
-		return customerDao.getCustomerByUsername(username);
-	}
+    public Customer getCustomerByUsername (String username) {
+        return customerDao.getCustomerByUsername(username);
+    }
 
 }

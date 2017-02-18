@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yona.estore.dao.CartItemDao;
 import com.yona.estore.model.Cart;
@@ -14,6 +15,7 @@ import com.yona.estore.model.CartItem;
 
 
 @Repository
+@Transactional
 public class CartItemDaoIml implements CartItemDao {
 
 	@Autowired

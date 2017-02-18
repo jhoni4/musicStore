@@ -12,21 +12,21 @@ import com.yona.estore.model.Cart;
 //@Repository =serves as Accessing Data by spring 
 @Repository
 @Transactional
-public class CartDaoImpl implements CartDao {
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	public Cart getCartById(int cartId){
-		Session session = sessionFactory.getCurrentSession();
-		return (Cart) session.get(Cart.class, cartId);
-	}
-	
-	public void updateCart(Cart cart){
-		Session session = sessionFactory.getCurrentSession();
-		int cartId = cart.getCartId();
-		session.update(cart);
-	}
+public class CartDaoImpl implements CartDao{
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public Cart getCartById (int cartId) {
+        Session session = sessionFactory.getCurrentSession();
+        return (Cart) session.get(Cart.class, cartId);
+    }
+
+    public void update(Cart cart) {
+        int cartId = cart.getCartId();
+        // to do later
+    }
+}
 
 //    private Map<String, Cart> listOfCarts;
 //
@@ -70,4 +70,3 @@ public class CartDaoImpl implements CartDao {
 //    }
     
     
-}

@@ -1,7 +1,5 @@
 package com.yona.estore.controller;
 
-import java.lang.ProcessBuilder.Redirect;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
@@ -24,11 +22,12 @@ public class CartController {
 	public String getCart(@AuthenticationPrincipal User activeUser){
 		Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
 		int cartId = customer.getCart().getCartId();
-		return "redirect: /customer/cart/" + cartId;
+		return "redirect:/customer/cart/"+ cartId;
+		
 	}
 	
 	@RequestMapping("/{cartId}")
-	public String getCartRedirect (@PathVariable (value= "cartId") int cartId, Model model){
+	public String getCartRedirect(@PathVariable (value= "cartId") int cartId, Model model){
 		model.addAttribute("cartId", cartId);
 		return "cart";
 		

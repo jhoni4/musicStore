@@ -6,5 +6,5 @@ public interface CartDao {
 
 	Cart getCartById(int cartId);
 
-	void updateCart(Cart cart);
+	void update(Cart cart);
 }

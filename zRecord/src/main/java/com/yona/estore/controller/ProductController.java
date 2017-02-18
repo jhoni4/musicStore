@@ -11,6 +11,7 @@ import com.yona.estore.service.ProductService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 
 
@@ -28,6 +29,12 @@ public class ProductController {
 
         return "productList";
     }
+//    @RequestMapping("/productList")
+//    public String getProducts(Map<String, Object> model) {
+//        model.put("products", productService.getProductList());
+//
+//        return "productList";
+//    }
 
     @RequestMapping("/viewProduct/{productId}")
     public String viewProduct(@PathVariable int productId, Model model) throws IOException {

@@ -1,19 +1,20 @@
-
-<!DOCTYPE html>
-<html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@include file="/WEB-INF/views/template/header.jsp" %>
+<br>
+<br>
 <head>
 	<meta charset="utf-8" />
 	<title>Contact Form</title>
 	<link href="./resources/css/tableStyle.css" rel="stylesheet">
 	<script  src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-	<!--[if IE]><script>
+	<!-- <!--[if IE]><script>
 	$(document).ready(function() { 
 
 $("#form_wrap").addClass('hide');
 
 })
 
-</script><![endif]-->
+</script><![endif]--> -->
 
 </head>
 <body>
@@ -33,7 +34,11 @@ $("#form_wrap").addClass('hide');
 			</form>
 		</div>
 	</div>
-More script and css style
-: <a href="http://www.htmldrive.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.htmldrive.net </a>
 </body>
-</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+<script src="<c:url value="/resources/js/controller.js" /> "></script>
+<%@include file="/WEB-INF/views/template/footer.jsp" %>
+
+
+

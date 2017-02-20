@@ -11,10 +11,6 @@ import java.io.Serializable;
 public class ShippingAddress implements Serializable{
 
 
-
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = -4494951877679878039L;
 	@Id
     @GeneratedValue

@@ -14,22 +14,23 @@ import com.yona.estore.service.CustomerService;
 @Controller
 @RequestMapping("/customer/cart")
 public class CartController {
-	
-	@Autowired
-	private CustomerService customerService;
-	
-	@RequestMapping
-	public String getCart(@AuthenticationPrincipal User activeUser){
-		Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
-		int cartId = customer.getCart().getCartId();
-		return "redirect:/customer/cart/" + cartId;
-	}
-	
-	@RequestMapping("/{cartId}")
-	public String getCartRedirect (@PathVariable(value= "cartId") int cartId, Model model){
-		model.addAttribute("cartId", cartId);
-		return "cart";
-		
-	}
+
+    @Autowired
+    private CustomerService customerService;
+
+    @RequestMapping
+    public String getCart(@AuthenticationPrincipal User activeUser){
+        Customer customer = customerService.getCustomerByUsername (activeUser.getUsername());
+        int cartId = customer.getCart().getCartId();
+
+        return "redirect:/customer/cart/"+cartId;
+    }
+
+    @RequestMapping("/{cartId}")
+    public String getCartRedirect(@PathVariable (value = "cartId") int cartId, Model model) {
+        model.addAttribute("cartId", cartId);
+
+        return "cart";
+    }
 
 }

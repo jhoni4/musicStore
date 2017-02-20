@@ -16,47 +16,37 @@ import com.yona.estore.model.CartItem;
 
 @Repository
 @Transactional
-public class CartItemDaoIml implements CartItemDao {
+public class CartItemDaoImpl implements CartItemDao{
 
-	@Autowired
-	private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	@Override
-	public void addCartItem(CartItem cartItem) {
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(cartItem);
-		session.flush();
+    public void addCartItem(CartItem cartItem) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(cartItem);
+        session.flush();
+    }
 
-	}
+    public void removeCartItem (CartItem cartItem) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(cartItem);
+        session.flush();
+    }
 
-	@Override
-	public void removeCartItem(CartItem cartItem) {
-		Session session = sessionFactory.getCurrentSession();
-		session.delete(cartItem);
-		session.flush();
+    public void removeAllCartItems(Cart cart) {
+        List<CartItem> cartItems = cart.getCartItems();
 
-	}
+        for (CartItem item : cartItems) {
+            removeCartItem(item);
+        }
+    }
 
-	@Override
-	public void removeAllCartItems(Cart cart) {
-		List<CartItem> cartItems = cart.getCartItems();
-		
-		for(CartItem item: cartItems){
-			removeCartItem(item);
-		}
-	}
-	
-	@Override
-	public CartItem getCartItemByProductId(int productId) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from CartItem where productId = ?");
-		query.setInteger(0, productId);
-		session.flush();
-		
-		return (CartItem) query.uniqueResult();
-		
-	}
-	
-	
+    public CartItem getCartItemByProductId (int productId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from CartItem where productId = ?");
+        query.setInteger(0, productId);
+        session.flush();
 
+        return (CartItem) query.uniqueResult();
+    }
 }

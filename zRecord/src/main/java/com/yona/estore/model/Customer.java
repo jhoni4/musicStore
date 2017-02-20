@@ -14,6 +14,7 @@ public class Customer implements Serializable {
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 5124699683096743411L;
 
 	@Id

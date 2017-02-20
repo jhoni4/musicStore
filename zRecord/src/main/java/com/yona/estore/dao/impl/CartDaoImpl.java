@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+
 import com.yona.estore.dao.CartDao;
 import com.yona.estore.model.Cart;
+import com.yona.estore.service.CustomerOrderService;
 
 //@Repository =serves as Accessing Data by spring 
 @Repository
@@ -17,6 +20,9 @@ public class CartDaoImpl implements CartDao{
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private CustomerOrderService customerOrderService;
+
     public Cart getCartById (int cartId) {
         Session session = sessionFactory.getCurrentSession();
         return (Cart) session.get(Cart.class, cartId);
@@ -24,49 +30,19 @@ public class CartDaoImpl implements CartDao{
 
     public void update(Cart cart) {
         int cartId = cart.getCartId();
-        // to do later
-    }
-}
+        double grandTotal = customerOrderService.getCustomerOrderGrandTotal(cartId);
+        cart.setGrandTotal(grandTotal);
 
-//    private Map<String, Cart> listOfCarts;
-//
-//    public CartDaoImpl() {
-//        listOfCarts = new HashMap<String, Cart>();
-//    }
-//
-//    public Cart create(Cart cart) {
-//        if (listOfCarts.keySet().contains(cart.getCartId())) {
-//            throw new IllegalArgumentException(String.format("Can not create a cart. A cart with the given id(%) " +
-//                    "already " + "exists", cart.getCartId()));
-//        }
-//
-//        listOfCarts.put(cart.getCartId(), cart);
-//
-//        return cart;
-//    }
-//    
-//
-//    public Cart read(String cartId) {
-//        return listOfCarts.get(cartId);
-//    }
-//
-//    public void update(String cartId, Cart cart) {
-//        if (!listOfCarts.keySet().contains(cartId)) {
-//            throw new IllegalArgumentException(String.format("Can not update cart. The cart with the given id(%) " +
-//                    "does not " + "exist", cart.getCartId()));
-//        }
-//
-//        listOfCarts.put(cartId, cart);
-//    }
-//
-//    public void delete (String cartId) {
-//        if (!listOfCarts.keySet().contains(cartId)) {
-//            throw new IllegalArgumentException(String.format("Can not delete cart. A cart with the given id(%) " +
-//                    "does not " +
-//                    "exist", cartId));
-//        }
-//
-//        listOfCarts.remove(cartId);
-//    }
-    
-    
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(cart);
+    }
+
+    public Cart validate(int cartId) throws IOException {
+        Cart cart=getCartById(cartId);
+        if(cart==null||cart.getCartItems().size()==0) {
+            throw new IOException(cartId+"");
+        }
+        update(cart);
+        return cart;
+    }
+ }

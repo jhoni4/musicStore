@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yona.estore.model.Customer;
 import com.yona.estore.model.Product;
+import com.yona.estore.service.CustomerService;
 import com.yona.estore.service.ProductService;
 
 
@@ -19,6 +21,9 @@ public class AdminHomeController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomerService customerService;
+    
     @RequestMapping
     public String adminPage() {
         return "admin";
@@ -35,7 +40,9 @@ public class AdminHomeController {
     @RequestMapping("/customer")
     public String customerManagement(Model model) {
 
-        //to add some customer service later
-        return "customerManagement";
+        List<Customer> customerList = customerService.getAllCustomers();
+        model.addAttribute("customerList", customerList);
+
+        return "customerManagment";
     }
 }

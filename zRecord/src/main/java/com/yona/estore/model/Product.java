@@ -15,14 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 // means persist this class in to database when running (1 class is 1 table and 1 instance of class is 1 row
 @Entity
 public class Product implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 478578195260021809L;
+	
+	
+   
+	private static final long serialVersionUID = 1850563979441282696L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String productId;
+    private int productId;
 
     @NotEmpty (message = "The product name must not be null.")
     private String productName;
@@ -42,11 +42,11 @@ public class Product implements Serializable{
     @Transient
     private MultipartFile productImage;
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 

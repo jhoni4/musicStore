@@ -21,23 +21,23 @@ public class HomeController {
 		return "contact";
 	}
 
-	@RequestMapping("/login")
 //	@RequestParam=>this method parameter should be bound to a web request parameter
 //	"required = false" ==>Default is true, leading to an exception thrown in case of the parameter missing in the request. 
 //	Switch this to false if you prefer a null in case of the parameter missing.
 	
-	public String login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, Model model) {
-		if (error != null) {
-			model.addAttribute("error", "Invalid username and password");
-		}
+	@RequestMapping("/login")
+    public String login(@RequestParam(value="error", required = false) String error, @RequestParam(value="logout",
+            required = false) String logout, Model model) {
+        if (error!=null) {
+            model.addAttribute("error", "Invalid username and password");
+        }
 
-		if (logout != null) {
-			model.addAttribute("msg", "You have been logged out successfully.");
-		}
+        if(logout!=null) {
+            model.addAttribute("msg", "You have been logged out successfully.");
+        }
 
-		return "login";
-	}
+        return "login";
+    }
 	
 	
 

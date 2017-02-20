@@ -44,28 +44,29 @@
 <!-- NAVBAR
 ================================================== -->
 <body>
-<div class="navbar-wrapper">
-    <div class="container">
+	<div class="navbar-wrapper">
+		<div class="container">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                            aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<c:url value="/" /> ">Le's Music Store</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="<c:url value="/" /> ">Home</a></li>
-                        <li><a href="<c:url value="/product/productList/all" />">Products</a></li>
-                        <li><a href="<c:url value="/about" />">About Us</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav pull-right">
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="<c:url value="/" /> ">Yoni's
+							Music Store</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="<c:url value="/" /> ">Home</a></li>
+							<li><a href="<c:url value="/product/productList/all" />">Products</a></li>
+							<li><a href="<c:url value="/contact" /> ">Contact</a></li>
+						</ul>
+						<ul class="nav navbar-nav pull-right">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
                             <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
                             <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
@@ -81,9 +82,9 @@
                         <li><a href="<c:url value="/register" />">Register</a></li>
                         </c:if>
                     </ul>
-                </div>
-            </div>
-        </nav>
+					</div>
+				</div>
+			</nav>
 
-    </div>
-</div>
+		</div>
+	</div>

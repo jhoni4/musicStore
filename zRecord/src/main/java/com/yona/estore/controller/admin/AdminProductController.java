@@ -26,70 +26,51 @@ import com.yona.estore.service.ProductService;
 @RequestMapping("/admin")
 public class AdminProductController {
 
-	private Path path;
+    private Path path;
 
-	@Autowired
-	private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-	/**
-	 * View addProduct
-	 * 
-	 * @param model
-	 *            (products)
-	 * @return
-	 **/
-
-	@RequestMapping("/product/addProduct")
+    @RequestMapping("/product/addProduct")
     public String addProduct(Model model) {
         Product product = new Product();
         product.setProductCategory("instrument");
         product.setProductCondition("new");
         product.setProductStatus("active");
 
-		// Here Model addAttribute(String attributeName, Object attributeValue)
-		model.addAttribute("product", product);
+        model.addAttribute("product", product);
 
-		return "addProduct";
-	}
+        return "addProduct";
+    }
 
-	/**
-	 * Add Product
-	 * 
-	 * @param product
-	 * @param result
-	 * @return
-	 **/
-	// @ModelAttribute = binds a method return value to a named model
-	// attribute(product),
-	@RequestMapping(value="/product/addProduct", method = RequestMethod.POST)
+    @RequestMapping(value="/product/addProduct", method = RequestMethod.POST)
     public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,
                                  HttpServletRequest request) {
-		if (result.hasErrors()) {
-			return "addProduct";
-		}
-		productService.addProduct(product);
-		// I thought the session is flushed already at this stage???
+        if(result.hasErrors()) {
+            return "addProduct";
+        }
 
-		MultipartFile productImage = product.getProductImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		// .get() = Converts a path string, or a sequence of strings that when
-		// joined form a path string, to a Path.
-		path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getProductId() + ".png");
+        productService.addProduct(product);
 
-		if (productImage != null && !productImage.isEmpty()) {
-			try {
-				productImage.transferTo(new File(path.toString()));
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("Product image saving failed", e);
-			}
-		}
-
-		return "redirect:/admin/productInventory";
-	}
+        MultipartFile productImage = product.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+//        path = Paths.get(rootDirectory + "WEB-INF/resources/images/"+product.getProductId()+".png");
+        path = Paths.get(rootDirectory + "WEB-INF/resources/images/"+product.getProductId()+".png");
 
 
-	@RequestMapping("/product/editProduct/{id}")
+        if (productImage != null && !productImage.isEmpty()) {
+            try {
+                productImage.transferTo(new File(path.toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Product image saving failed.", e);
+            }
+        }
+
+        return "redirect:/admin/productInventory";
+    }
+
+    @RequestMapping("/product/editProduct/{id}")
     public String editProduct(@PathVariable("id") int id, Model model) {
         Product product = productService.getProductById(id);
 
@@ -97,28 +78,19 @@ public class AdminProductController {
 
         return "editProduct";
     }
-	
-	/**
-	 * edit Product
-	 * 
-	 * @param product
-	 * @return
-	 **/
 
-
-	@RequestMapping(value="/product/editProduct", method = RequestMethod.POST)
+    @RequestMapping(value="/product/editProduct", method = RequestMethod.POST)
     public String editProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result,
                                  HttpServletRequest request) {
         if(result.hasErrors()) {
             return "editProduct";
         }
-		// MultipartFile =Return the original filename in the client's
-		// filesystem.
-		MultipartFile productImage = product.getProductImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + product.getProductId() + ".png");
 
-		if (productImage != null && !productImage.isEmpty()) {
+        MultipartFile productImage = product.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        path = Paths.get(rootDirectory + "WEB-INF/resources/images/"+product.getProductId()+".png");
+
+        if (productImage != null && !productImage.isEmpty()) {
             try {
                 productImage.transferTo(new File(path.toString()));
             } catch (Exception e) {
@@ -131,19 +103,11 @@ public class AdminProductController {
 
         return "redirect:/admin/productInventory";
     }
-	
-	/**
-	 * Delete Product
-	 * 
-	 * @param productId
-	 * @return
-	 **/
 
-	
-	@RequestMapping("/product/deleteProduct/{id}")
+    @RequestMapping("/product/deleteProduct/{id}")
     public String deleteProduct(@PathVariable int id, Model model, HttpServletRequest request) {
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "/WEB-INF/resources/images/" + id + ".png");
+        path = Paths.get(rootDirectory + "WEB-INF/resources/images/" + id + ".png");
 
         if (Files.exists(path)) {
             try {
@@ -158,5 +122,4 @@ public class AdminProductController {
 
         return "redirect:/admin/productInventory";
     }
-
 }

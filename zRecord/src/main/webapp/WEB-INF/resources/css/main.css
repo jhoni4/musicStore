@@ -1,4 +1,9 @@
-
+/* body {
+	background-image: url("images/wall.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+} */
+body {background: #ccc url('images/bg_out.png'); color: #7c7873; font-family: 'YanoneKaffeesatzRegular';}
 .container-wrapper {
     height: 80%;
     margin: auto;

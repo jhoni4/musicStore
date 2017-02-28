@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yona.estore.dao.CustomerDao;
 import com.yona.estore.model.Customer;
+import com.yona.estore.model.Product;
 import com.yona.estore.service.CustomerService;
 
 @Service
@@ -30,5 +31,17 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getCustomerByUsername (String username) {
         return customerDao.getCustomerByUsername(username);
     }
+
+	public void editCustomer(Customer customer) {
+		customerDao.editCustomer(customer);
+		
+	}
+
+	public void deleteCustomer(Customer customer) {
+		customerDao.deleteCustomer(customer);
+		
+	}
+
+	
 
 }

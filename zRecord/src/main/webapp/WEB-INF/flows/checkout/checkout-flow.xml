@@ -4,10 +4,10 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow 
       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-    <var name="order" class="com.yona.estore.model.CustomerOrder" />
-
+ <var name="order" class="com.yona.estore.model.CustomerOrder" /> 
+	
     <action-state id="addCartToOrder">
-        <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart" />
+        <evaluate expression="cartDaoImpl.validate(requestParameters.cartId)" result="order.cart"/>
         <transition to="invalidCartWarning" on-exception="java.io.IOException" />
         <transition to="collectCustomerInfo" />
     </action-state>

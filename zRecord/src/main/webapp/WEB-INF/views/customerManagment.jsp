@@ -19,6 +19,7 @@
                 <th>Phone</th>
                 <th>Username</th>
                 <th>Enabled</th>
+                <th>Actions</th>
 
             </tr>
             </thead>
@@ -29,6 +30,13 @@
                     <td>${customer.customerPhone}</td>
                     <td>${customer.username}</td>
                     <td>${customer.enabled}</td>
+                    <td><%-- <a href="<spring:url value="/admin/deleteCustomer/${customer.customerId}" />"><span
+							class="glyphicon glyphicon-remove"></span></a>  --%>
+						<a href="<spring:url value="/admin/viewCustomer/${customer.customerId}" />"><span
+							class="glyphicon glyphicon-info-sign"></span></a>
+						<%-- <a href="<spring:url value="/admin/editCustomer/${customer.customerId}" />"><span
+							class="glyphicon glyphicon-edit"></span></a> --%>
+					</td>
                 </tr>
             </c:forEach>
         </table>

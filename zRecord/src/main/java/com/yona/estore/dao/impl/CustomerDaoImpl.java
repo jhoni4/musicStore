@@ -13,6 +13,7 @@ import com.yona.estore.dao.CustomerDao;
 import com.yona.estore.model.Authorities;
 import com.yona.estore.model.Cart;
 import com.yona.estore.model.Customer;
+import com.yona.estore.model.Product;
 import com.yona.estore.model.Users;
 
 @Repository
@@ -72,5 +73,45 @@ public class CustomerDaoImpl implements CustomerDao {
 		query.setString(0, username);
 
 		return (Customer) query.uniqueResult();
+	}
+
+	@Override
+	public void editCustomer(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+
+		customer.getBillingAddress().setCustomer(customer);
+		customer.getShippingAddress().setCustomer(customer);
+
+		session.saveOrUpdate(customer);
+		session.saveOrUpdate(customer.getBillingAddress());
+		session.saveOrUpdate(customer.getShippingAddress());
+
+		Users newUser = new Users();
+		newUser.setUsername(customer.getUsername());
+		newUser.setPassword(customer.getPassword());
+		newUser.setEnabled(true);
+		// newUser.setCustomerId(customer.getCustomerId());
+
+		Authorities newAuthority = new Authorities();
+		newAuthority.setUsername(customer.getUsername());
+		newAuthority.setAuthority("ROLE_USER");
+		session.saveOrUpdate(newUser);
+		session.saveOrUpdate(newAuthority);
+
+		Cart newCart = new Cart();
+		newCart.setCustomer(customer);
+		customer.setCart(newCart);
+		session.saveOrUpdate(customer);
+		session.saveOrUpdate(newCart);
+
+		session.flush();
+
+	}
+
+	public void deleteCustomer(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(customer);
+		session.flush();
+
 	}
 }

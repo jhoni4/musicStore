@@ -1,30 +1,40 @@
 package com.yona.estore.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // means persist this class in to database when running (1 class is 1 table and 1 instance of class is 1 row
 @Entity
 public class Product implements Serializable{
-	
-	
+
    
-	private static final long serialVersionUID = 1850563979441282696L;
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5439931173773092040L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int productId;
 
     @NotEmpty (message = "The product name must not be null.")
+
     private String productName;
     private String productCategory;
     private String productDescription;
@@ -38,9 +48,13 @@ public class Product implements Serializable{
     private int unitInStock;
     private String productManufacturer;
 
-//@Transient= Specifies that the property or field is not persistent(not to be stored in DB)
     @Transient
     private MultipartFile productImage;
+
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CartItem> cartItemList;
 
     public int getProductId() {
         return productId;
@@ -120,6 +134,15 @@ public class Product implements Serializable{
 
     public void setProductImage(MultipartFile productImage) {
         this.productImage = productImage;
+    }
+
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
     }
 }
 

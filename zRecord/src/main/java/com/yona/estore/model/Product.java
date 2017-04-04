@@ -34,7 +34,6 @@ public class Product implements Serializable{
     private int productId;
 
     @NotEmpty (message = "The product name must not be null.")
-
     private String productName;
     private String productCategory;
     private String productDescription;

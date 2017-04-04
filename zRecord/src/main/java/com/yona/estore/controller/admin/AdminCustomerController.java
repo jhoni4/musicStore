@@ -25,11 +25,5 @@ public class AdminCustomerController {
 		return "customerDetail";
 		
 	}
-//	@RequestMapping("/deleteCustomer/{customerId}")
-//	public String deleteCustomerDetail(@PathVariable int customerId, Customer customer){
-//		customerService.deleteCustomer(customer);		
-//		return "redirect:/admin/customer";
-//		
-//	}
 
 }

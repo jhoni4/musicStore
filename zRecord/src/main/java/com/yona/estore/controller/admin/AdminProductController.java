@@ -63,8 +63,8 @@ public class AdminProductController {
 			try {
 				productImage.transferTo(new File(path.toString()));
 			} catch (Exception e) {
-				e.printStackTrace();
-				throw new RuntimeException("Product image saving failed.", e);
+				logger.error("Exception :: ", e);
+				throw new IllegalArgumentException("Product image saving failed.", e);
 			}
 		}
 

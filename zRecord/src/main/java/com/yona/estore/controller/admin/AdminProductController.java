@@ -64,7 +64,6 @@ public class AdminProductController {
 				productImage.transferTo(new File(path.toString()));
 			} catch (Exception e) {
 				logger.error("Exception :: ", e);
-				throw new IllegalArgumentException("Product image saving failed.", e);
 			}
 		}
 

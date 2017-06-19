@@ -1,0 +1,5 @@
+projectKey=zRecord
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/zRecord
+ceTaskId=AVxXfWrHZ_iPRiUl15eG
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVxXfWrHZ_iPRiUl15eG

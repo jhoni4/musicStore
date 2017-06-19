@@ -90,9 +90,13 @@ public class CartResources {
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Illegal request, please verify your payload.")
-    public void handleClientErrors (Exception e) {}
+    public void handleClientErrors (Exception e) {
+    	// Do nothing
+    }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal Server Error.")
-    public void handleServerErrors (Exception e) {}
+    public void handleServerErrors (Exception e) {
+    	// Do nothing
+    }
 }

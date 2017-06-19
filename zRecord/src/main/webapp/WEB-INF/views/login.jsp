@@ -11,21 +11,19 @@
 	<c:if test="${not empty msg}">
 		<div class="msg">${msg}</div>
 	</c:if>
-	<form name="loginForm"
-		action="<c:url value="/j_spring_security_check" />" method="post">
+	<form name="loginForm" action="<c:url value="/j_spring_security_check" />" method="post">
 		<c:if test="${not empty error}">
 			<div class="error" style="color: #fff;">${error}</div>
 		</c:if>
 		<div>Log in to your account or sign up to create one.</div>
 		<div class="tag">SIGN IN</div>
 		<div class="form-group">
-			<label for="username">User: </label> <input type="text" id="username"
-				name="username" class="form-control" placeholder="Name:" />
+			<label for="username">User: </label> 
+			<input type="text" id="username" name="username" class="form-control" placeholder="Name:" />
 		</div>
 		<div class="form-group">
-			<label for="password">Password:</label> <input type="password"
-				id="password" name="password" class="form-control"
-				placeholder="Password:" />
+			<label for="password">Password:</label> 
+			<input type="password" id="password" name="password" class="form-control" placeholder="Password:" />
 		</div>
 
 		<input type="submit" value="Submit" class="btn"> 

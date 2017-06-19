@@ -1,0 +1,5 @@
+projectKey=Nissan
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/Nissan
+ceTaskId=AVxXpAkCZ_iPRiUl15kj
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVxXpAkCZ_iPRiUl15kj
